@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>exTemplate</title>
+</head>
+<body>
+<th:block th:replace = "~{/layout/layout1 :: setContent(~{this::content})}">
+
+    <th:block th:fragment="content">
+    	<h1>content of th:fragment</h1>
+        <h1>exTemplate Page, core fragment of layout1, this call layout1 and, layout1 calls other fragments</h1>
+    </th:block>
+</th:block>
+</body>
+</html>
