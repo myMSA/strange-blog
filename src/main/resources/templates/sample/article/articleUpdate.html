@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{sample/fragments/head :: headFragment}"></head>
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- nav fragment -->
+    <nav th:replace="~{sample/fragments/nav :: navFragment}">
+    </nav>
+    <!-- nav fragment end -->
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{sample/fragments/contentTop :: contentTop}">
+        </section>
+        <!-- Page content-->
+        <form th:action="@{/sample/article}" th:object="${article}" th:method="put">
+            <table>
+                <!-- patch가 아닌 put의 경우 전달할때, 일부속성만이 아니라 전 속성을 보내줘야한다. -->
+                <!-- 현재 글 제목과 내용만 수정하는 상황이므로, patch가 더 적절하나, 기본학습을 위해 put으로 결정 -->
+                <!-- 모든 값을 보내되, 화면에 노출되지 말아야하는 것은 hidden으로 처리한다. -->
+                <input type="hidden" th:field="*{id}" />
+                <input type="hidden" th:field="*{writer}" />
+                <input type="hidden" th:field="*{readCount}" />
+                <input type="hidden" th:field="*{regDate}" />
+                <input type="hidden" th:field="*{password}" />
+
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" th:field="*{title}" /></td>
+                </tr>
+
+                <tr>
+                    <th>내용</th>
+                    <td><textarea rows="20" cols="70" th:field="*{content}"></textarea></td>
+                </tr>
+
+            </table>
+
+            <a th:href="@{../articles}" class="btn">목록으로</a>
+            <button type="submit">수정하기</button>
+        </form>
+    </div>
+</div>
+</body>
+
+
+</html>

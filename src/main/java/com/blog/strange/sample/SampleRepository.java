@@ -1,7 +1,6 @@
 package com.blog.strange.sample;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class SampleRepository {
+public interface SampleRepository extends JpaRepository<Sample, Long> {
 }
