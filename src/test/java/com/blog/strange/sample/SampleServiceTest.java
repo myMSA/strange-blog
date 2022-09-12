@@ -22,7 +22,7 @@ class SampleServiceTest {
     @Test
     void sampleFindbyId() throws Exception {
         System.out.println("test");
-        System.out.println(sampleService.findSampleDetail(2L).toString());
+        System.out.println(sampleService.findSampleDetailById(2L).toString());
 
     }
 }
